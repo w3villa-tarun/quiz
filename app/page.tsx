@@ -13,20 +13,24 @@ type Page = 'home' | 'quiz' | 'results' | 'review' | 'stats';
 export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
 
+  const navigate = (page: string) => {
+    setCurrentPage(page as Page);
+  };
+
   const renderPage = () => {
     switch (currentPage) {
       case 'home':
-        return <HomePage onNavigate={setCurrentPage} />;
+        return <HomePage onNavigate={navigate} />;
       case 'quiz':
-        return <QuizPage onNavigate={setCurrentPage} />;
+        return <QuizPage onNavigate={navigate} />;
       case 'results':
-        return <ResultsPage onNavigate={setCurrentPage} />;
+        return <ResultsPage onNavigate={navigate} />;
       case 'review':
-        return <ReviewPage onNavigate={setCurrentPage} />;
+        return <ReviewPage onNavigate={navigate} />;
       case 'stats':
-        return <StatsPage onNavigate={setCurrentPage} />;
+        return <StatsPage onNavigate={navigate} />;
       default:
-        return <HomePage onNavigate={setCurrentPage} />;
+        return <HomePage onNavigate={navigate} />;
     }
   };
 
